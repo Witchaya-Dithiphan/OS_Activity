@@ -7,22 +7,26 @@ namespace ex01
     class Program
     {
         private static int sum = 0;
-
+        static object _Lock = new object();
         static void plus()
         {
-            int i;
-            for (i = 1; i < 1000001; i++)
-            {
-                sum += i;
+            lock (_Lock){
+                int i;
+                for (i = 1; i < 1000001; i++)
+                {
+                    sum += i;
+                }
             }
         }
 
         static void minus()
         {
-            int i;
-            for (i = 0; i < 1000000; i++)
-            {
-                sum -= i;
+            lock (_Lock){
+                int i;
+                for (i = 0; i < 1000000; i++)
+                {
+                    sum -= i;
+                }
             }
         }
 
